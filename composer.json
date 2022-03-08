@@ -1,0 +1,18 @@
+{
+	"name": "lodev09/php-todo",
+	"version": "0.0.1",
+	"description": "Simple to-do app built with vanilla php and SQLite",
+	"autoload": {
+		"psr-4": {
+			"Common\\": "lib/common",
+			"Models\\": "lib/models",
+            "App\\": "lib/app"
+		}
+	},
+	"require": {
+		"php": ">=7.3",
+		"lodev09/php-util": "^2.0",
+		"lodev09/php-models": "^2.3",
+        "vlucas/phpdotenv": "^3.3"
+	}
+}

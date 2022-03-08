@@ -1,0 +1,35 @@
+# Force the latest IE version, in various cases when it may fall back to IE7 mode
+<IfModule mod_setenvif.c>
+    <IfModule mod_headers.c>
+        BrowserMatch MSIE ie
+        Header set X-UA-Compatible "IE=Edge,chrome=1" env=ie
+    </IfModule>
+</IfModule>
+
+# Custom error pages
+ErrorDocument 404 /error/404
+ErrorDocument 500 /error/500
+ErrorDocument 503 /error/503
+
+# UTF-8 encoding for anything served text/plain or text/html
+AddDefaultCharset utf-8
+
+# Force UTF-8 for certain file formats
+AddCharset utf-8 .html .css .js .xml .json .rss
+
+RewriteEngine On
+
+# Block users from browsing folders
+Options -Indexes
+IndexIgnore *
+
+# 404 some directories
+RewriteRule ^includes/ - [L,R=404]
+
+# Uncomment if you're not using the public folder
+# RewriteRule ^vendor/ - [L,R=404]
+# RewriteRule ^.git/ - [L,R=404]
+# RewriteRule ^\.gitignore|.*\.md|composer.json|composer.lock|\.sql$ - [L,R=404]
+
+### errors
+RewriteRule ^error/(\d+)/?$ error.php?code=$1 [QSA,L]

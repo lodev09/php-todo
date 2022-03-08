@@ -1,0 +1,12 @@
+node_modules
+.git
+*.code-workspace
+*.log
+*.zip
+*.csv
+*.bak
+package-lock.json
+vendor
+.env
+
+*.sublime-*
