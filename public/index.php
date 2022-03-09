@@ -17,6 +17,10 @@ include_once APP_PATH.'/includes/_head.php';
                 <input name="body" type="text" class="js-task-input" placeholder="Add your new todo" autofocus required autocomplete="off">
                 <button type="submit" class="js-add-task" disabled><i class="fas fa-plus"></i></button>
             </form>
+            <div class="stats js-stats" style="display: none">
+                <div class="stat js-stat-completed"></div>
+                <div class="stat js-stat-total"></div>
+            </div>
             <ul class="tasks js-tasks"></ul>
             <small class="text-muted js-message"></small>
         </div>
@@ -28,6 +32,7 @@ include_once APP_PATH.'/includes/_head.php';
         'js/libs/todo.js',
         'js/home.js'
     ];
+
     include_once APP_PATH.'/includes/_js.php';
 
     ?>

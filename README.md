@@ -6,8 +6,8 @@ Simple to-do app built with vanilla php and SQLite
 - [x] Delete a task
 - [x] Complete a task
 - [x] Set a priority for my tasks
-- [ ] View the tasks sorted by priority and name
-- [ ] View the number of total and completed tasks
+- [x] View the tasks sorted by priority and name
+- [x] View the number of total and completed tasks
 
 ## Installation
 This will guide you through the basic installation of the app. If you find any issues or want to request a feature, contact me at [@lodev09](https://github.com/lodev09).

@@ -32,6 +32,8 @@ Todo.prototype = {
                 that.showMessage('You don\'t have any tasks at the moment.', 'circle-info');
             }
 
+            that.initStats();
+
         }).fail(function(xhr) {
             $.xhrError(xhr);
             that.showMessage('Something went wrong :(', 'triangle-exclamation');
@@ -59,12 +61,41 @@ Todo.prototype = {
 
                 // Append the newly created task
                 that.appendTask(data);
+
+                // Refresh stats
+                that.initStats();
+
+                // Clear form
                 that.clear(true);
+
             }).fail(function(xhr) {
                 var message = $.xhrError(xhr);
                 that.showMessage(message, 'triangle-exclamation');
             });
         })
+    },
+    initStats: function() {
+        var $element = $(this._element);
+        var $stats = $element.find('.js-stats');
+        var $taskItems = $element.find('.js-tasks').find('li');
+        var total = 0;
+        var completed = 0;
+
+        if ($taskItems.length === 0) {
+            $stats.hide();
+            return;
+        }
+
+        completed = $taskItems.filter(function() {
+            return $(this).is('.completed') === true;
+        }).length;
+
+        total = $taskItems.length;
+
+        $stats.show();
+
+        $stats.find('.js-stat-total').html(`<small>Total: <strong>` + total + `</strong></small>`);
+        $stats.find('.js-stat-completed').html(`<small>Completed: <strong>` + completed + `</strong></small>`);
     },
     clear: function(focus) {
         var $element = $(this._element);
@@ -90,6 +121,7 @@ Todo.prototype = {
         `);
     },
     appendTask: function(data) {
+        var that = this;
         var $element = $(this._element);
         var $tasks = $element.find('.js-tasks');
 
@@ -108,6 +140,29 @@ Todo.prototype = {
 
         // Create the task object
         var task = new Task($task.get(0));
+
+        //
+        // Task events
+        //
+
+        //
+        // Completed
+        $task.on('task-completed', function() {
+            that.initStats();
+        });
+
+        //
+        // Deleted
+        $task.on('task-deleted', function() {
+            $(this).remove();
+            that.initStats();
+        });
+
+        //
+        // Prioritized
+        $task.on('task-prioritized', function() {
+            that.initStats();
+        });
     }
 }
 
@@ -136,9 +191,12 @@ Task.prototype = {
         `);
 
         this.initEvents();
-        this.setStats();
+        this.initIndicators();
     },
-    setStats: function() {
+    _triggerEvent: function(event, param) {
+        $(this._element).trigger($.extend({ type: event }, this), param);
+    },
+    initIndicators: function() {
         var $element = $(this._element);
 
         // Completed
@@ -183,11 +241,14 @@ Task.prototype = {
         });
     },
     delete: function() {
+        var that = this;
         var $element = $(this._element);
 
         $.post($.ajaxUrl + '/delete-task', { task_id: this.data.id }, function(data) {
-            $element.remove();
+
             toastr.success(data.message);
+            that._triggerEvent('task-deleted');
+
         }).fail($.xhrError);
     },
     complete: function() {
@@ -197,7 +258,9 @@ Task.prototype = {
         $.post($.ajaxUrl + '/complete-task', { task_id: this.data.id }, function(data) {
             that.data.completed = true;
             toastr.success(data.message);
-            that.setStats();
+            that.initIndicators();
+            that._triggerEvent('task-completed');
+
         }).fail($.xhrError);
     },
     prioritize: function() {
@@ -207,7 +270,9 @@ Task.prototype = {
         $.post($.ajaxUrl + '/prioritize-task', { task_id: this.data.id }, function(data) {
             that.data.priority = true;
             toastr.success(data.message);
-            that.setStats();
+            that.initIndicators();
+            that._triggerEvent('task-prioritized');
+
         }).fail($.xhrError);
     }
 }

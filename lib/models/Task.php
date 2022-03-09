@@ -9,7 +9,7 @@ class Task extends Model {
             SELECT *
             FROM tasks
             WHERE active = 1
-            ORDER BY completed, priority DESC
+            ORDER BY completed, priority DESC, body
         ");
     }
 
