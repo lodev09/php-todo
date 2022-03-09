@@ -5,10 +5,6 @@
 
 require_once ROOT_PATH.'/vendor/autoload.php';
 
-// load configuration from .env
-$dotenv = Dotenv\Dotenv::create(ROOT_PATH, '.env');
-$dotenv->load();
-
-// global functions
+// includes
 require_once ROOT_PATH.'/config.php';
 require_once ROOT_PATH.'/lib/func.php';

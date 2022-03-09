@@ -1,5 +1,5 @@
-# To-do
-Simple to-do app built with vanilla php and SQLite
+# PHP Todo App
+Simple to-do app built with vanilla php and SQLite.
 
 ## Features
 - [x] Add and view tasks
@@ -22,6 +22,25 @@ This project uses [Composer](https://getcomposer.org) to manage its dependencies
 
 ```bash
 composer install
+```
+
+### Configuration (.env)
+
+<div class="alert alert-danger">
+Make sure you store sensitive and private information in a secure location and not accessible publicly. <strong>DO NOT</strong> include the config file in your repository.
+</div>
+
+This project uses the package [vlucas/phpdotenv](https://github.com/vlucas/phpdotenv) to store sensitive and private information like database credentials. The package includes an `.env` file that you can modify as needed. Save `sample.env` as `.env` in the root folder.
+
+If you wish not to use `.env`, feel free to comment in `config.php` and modify the constants as needed.
+
+```php
+// load configuration
+// $dotenv = Dotenv\Dotenv::create(ROOT_PATH, '.env');
+// $dotenv->load();
+
+// set the constant DB_PATH for example.
+define('DB_PATH', 'path/to/todo.db');
 ```
 
 ### URL Rewriting

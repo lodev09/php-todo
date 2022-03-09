@@ -30,9 +30,6 @@ $title = $_title.' - '.$app_title;
 
     <?php
 
-    $theme_ext = isset($_theme) && $_theme === 'dark' ? '-dark' : '';
-    $scheme = $_scheme ?? 'default';
-
     $libs = [
         'css/main.css'
     ];
@@ -63,4 +60,4 @@ $title = $_title.' - '.$app_title;
 
     ?>
 
-
+</head>

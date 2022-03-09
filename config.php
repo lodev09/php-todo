@@ -1,5 +1,9 @@
 <?php
 
+// load configuration from .env
+$dotenv = Dotenv\Dotenv::create(ROOT_PATH, '.env');
+$dotenv->load();
+
 define('__DEV__', getenv('ENVIRONMENT') === 'dev');
 define('__TEST__', getenv('ENVIRONMENT') === 'test');
 define('__LOCAL__', getenv('LOCAL_DEV') === 'true');

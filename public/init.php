@@ -14,6 +14,12 @@ if (!file_exists($autoload_file)) {
 	exit;
 }
 
+// Check for the config file
+if (file_exists(ROOT_PATH.'/.env') === false) {
+    include_once APP_PATH.'/_config.php';
+    exit;
+}
+
 require_once ROOT_PATH.'/root.php';
 require_once ROOT_PATH.'/debug.php';
 

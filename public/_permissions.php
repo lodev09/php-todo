@@ -2,7 +2,7 @@
 
 require_once 'init.php';
 
-$_title = 'Database';
+$_title = 'Permissions';
 include_once APP_PATH.'/includes/_head.php';
 
 ?>
