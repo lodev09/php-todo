@@ -1,5 +1,8 @@
 # PHP Todo App
-Simple to-do app built with vanilla php and SQLite.
+Simple Todo App built with Vanilla PHP and SQLite.
+
+## Live demo
+[todo.lodev09.com](https://todo.lodev09.com)
 
 ## Features
 - [x] Add and view tasks
