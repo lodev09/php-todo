@@ -44,7 +44,7 @@ define('DB_PATH', 'path/to/todo.db');
 This project includes a blank database (`db/todo.db.blank`) in the repository.
 You can save it as `todo.db` or run the utility to load the tables.
 ```bash
-php /path/to/todo/utils/db.php
+php /path/to/todo/utils/load_db.php
 ```
 
 ### URL Rewriting
