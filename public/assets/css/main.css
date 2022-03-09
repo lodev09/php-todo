@@ -57,8 +57,7 @@ body {
     border-radius: 3px;
     transition: all 0.3s ease;
 }
-.todo-input button:hover,
-.footer button:hover {
+.todo-input button:hover {
     opacity: 0.8;
 }
 .todo-input button:disabled {
@@ -80,6 +79,11 @@ body {
     cursor: default;
     overflow: hidden;
     word-wrap: break-word;
+}
+.tasks li.completed {
+    text-decoration: line-through;
+    color: #7f8c8d;
+    background: #e6e6e6;
 }
 .tasks li .control {
     width: 24px;
@@ -103,33 +107,6 @@ body {
 }
 .tasks li:hover .controls {
     right: 0px;
-}
-.wrapper .footer {
-    display: flex;
-    width: 100%;
-    margin-top: 20px;
-    align-items: center;
-    justify-content: space-between;
-}
-.footer button {
-    padding: 6px 10px;
-    border-radius: 3px;
-    border: none;
-    outline: none;
-    color: #fff;
-    font-weight: 400;
-    font-size: 16px;
-    margin-left: 5px;
-    background: #27ae60;
-    cursor: pointer;
-    user-select: none;
-    opacity: 0.6;
-    pointer-events: none;
-    transition: all 0.3s ease;
-}
-.footer button.active {
-    opacity: 1;
-    pointer-events: auto;
 }
 
 .text-muted { color: #7f8c8d; }

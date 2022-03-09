@@ -21,6 +21,24 @@ function delete_task() {
     return 'Task has been successfully deleted';
 }
 
+function prioritize_task() {
+    $task_id = get('task_id', $_POST);
+    $task = \Models\Task::instance($task_id);
+    if (!$task) throw new Exception('Task not found', 404);
+
+    $task->prioritize();
+    return 'Task has been successfully prioritized';
+}
+
+function complete_task() {
+    $task_id = get('task_id', $_POST);
+    $task = \Models\Task::instance($task_id);
+    if (!$task) throw new Exception('Task not found', 404);
+
+    $task->complete();
+    return 'Task has been completed successfully';
+}
+
 function get_tasks() {
     $data = [];
 

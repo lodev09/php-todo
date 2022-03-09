@@ -89,20 +89,25 @@ Todo.prototype = {
             ` + message + `
         `);
     },
-    appendTask: function(task) {
-        var $tasks = $(this._element).find('.js-tasks');
+    appendTask: function(data) {
+        var $element = $(this._element);
+        var $tasks = $element.find('.js-tasks');
 
         // Create task element
         var $task = $('<li>');
 
         // Set data
-        $task.data('task', task);
+        $task.data('task', data);
 
         // Append to DOM
-        $tasks.prepend($task);
+        // Insert before first completed task
+        var $firstCompletedTask = $element.find('li.completed').eq(0);
+
+        if ($firstCompletedTask.length) $task.insertBefore($firstCompletedTask);
+        else $tasks.append($task);
 
         // Create the task object
-        return new Task($task.get(0));
+        var task = new Task($task.get(0));
     }
 }
 
@@ -120,16 +125,37 @@ var Task = function(element) {
 Task.prototype = {
     init: function() {
         var $element = $(this._element);
-        $element.html(
-            $.escape(this.data.body) + `
+        $element.html(`
+            <span class="fas fa-circle-exclamation text-warning js-priority-indicator" style="display: none"></span>
+            ` + $.escape(this.data.body) + `
             <div class="controls">
                 <a href="#" class="text-success control js-complete"><i class="fas fa-circle-check"></i></a>
-                <a href="#" class="text-warning control js-priority"><i class="fas fa-circle-exclamation"></i></a>
+                <a href="#" class="text-warning control js-prioritize"><i class="fas fa-circle-exclamation"></i></a>
                 <a href="#" class="text-danger control js-delete"><i class="fas fa-circle-xmark"></i></a>
             </div>
         `);
 
         this.initEvents();
+        this.setStats();
+    },
+    setStats: function() {
+        var $element = $(this._element);
+
+        // Completed
+        if (this.data.completed) {
+            $element.addClass('completed');
+        } else {
+            $element.removeClass('completed');
+        }
+
+        // Priority
+        if (this.data.priority) {
+            $element.find('.js-priority-indicator').show();
+            $element.addClass('priority');
+        } else {
+            $element.find('.js-priority-indicator').hide();
+            $element.removeClass('priority');
+        }
     },
     initEvents: function() {
         var that = this;
@@ -141,6 +167,20 @@ Task.prototype = {
             e.preventDefault();
             that.delete();
         });
+
+        //
+        // Complete this task
+        $element.find('.js-complete').on('click', function(e) {
+            e.preventDefault();
+            that.complete();
+        });
+
+        //
+        // Prioritize task
+        $element.find('.js-prioritize').on('click', function(e) {
+            e.preventDefault();
+            that.prioritize();
+        });
     },
     delete: function() {
         var $element = $(this._element);
@@ -148,6 +188,26 @@ Task.prototype = {
         $.post($.ajaxUrl + '/delete-task', { task_id: this.data.id }, function(data) {
             $element.remove();
             toastr.success(data.message);
+        }).fail($.xhrError);
+    },
+    complete: function() {
+        var that = this;
+        var $element = $(this._element);
+
+        $.post($.ajaxUrl + '/complete-task', { task_id: this.data.id }, function(data) {
+            that.data.completed = true;
+            toastr.success(data.message);
+            that.setStats();
+        }).fail($.xhrError);
+    },
+    prioritize: function() {
+        var that = this;
+        var $element = $(this._element);
+
+        $.post($.ajaxUrl + '/prioritize-task', { task_id: this.data.id }, function(data) {
+            that.data.priority = true;
+            toastr.success(data.message);
+            that.setStats();
         }).fail($.xhrError);
     }
 }

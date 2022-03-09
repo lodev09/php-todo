@@ -4,8 +4,8 @@ Simple to-do app built with vanilla php and SQLite
 ## Features
 - [x] Add and view tasks
 - [x] Delete a task
-- [ ] Complete a task
-- [ ] Set a priority for my tasks
+- [x] Complete a task
+- [x] Set a priority for my tasks
 - [ ] View the tasks sorted by priority and name
 - [ ] View the number of total and completed tasks
 
