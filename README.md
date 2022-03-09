@@ -42,14 +42,6 @@ If you wish not to use `.env`, feel free to comment in `config.php` and modify t
 define('DB_PATH', 'path/to/todo.db');
 ```
 
-### Database
-
-This project includes a blank database (`db/todo.db.blank`) in the repository.
-You can save it as `todo.db` or run the utility to load the tables.
-```bash
-php /path/to/todo/utils/load_db.php
-```
-
 ### URL Rewriting
 
 The project includes a `.htaccess` file in the `public` directory – make sure it has been uploaded correctly.
