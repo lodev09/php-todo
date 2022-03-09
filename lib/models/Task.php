@@ -21,6 +21,14 @@ class Task extends Model {
         return $this->update('completed', 1);
     }
 
+    public function isPriority() {
+        return $this->priority ? true : false;
+    }
+
+    public function isCompleted() {
+        return $this->completed ? true : false;
+    }
+
     public function get() {
         $data = $this->toArray(['id', 'priority', 'completed', 'body', 'created_at']);
         return $data;

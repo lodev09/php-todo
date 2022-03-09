@@ -4,6 +4,14 @@
 use \Common\Util;
 
 /**
+ * Check if request is POST
+ * @return boolean
+ */
+function is_post() {
+    return REQUEST_METHOD === 'POST';
+}
+
+/**
  * Escape HTML strings
  *
  * @param  [type]  $str
@@ -12,6 +20,15 @@ use \Common\Util;
  */
 function escape($str, $nl2br = false) {
 	return Util::escapeHtml($str, $nl2br);
+}
+
+/**
+ * Redirect to given url
+ * @param  string $url
+ * @return void
+ */
+function redirect($url) {
+    Util::redirect($url);
 }
 
 /**

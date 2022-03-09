@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "lodev09/php-models",
-            "version": "2.3.2",
+            "version": "2.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lodev09/php-models.git",
-                "reference": "b66df25be683a06f90b38e11c398cfb2bd0e4d35"
+                "reference": "56d4950797d9d452274815fc117222f40b3b27fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lodev09/php-models/zipball/b66df25be683a06f90b38e11c398cfb2bd0e4d35",
-                "reference": "b66df25be683a06f90b38e11c398cfb2bd0e4d35",
+                "url": "https://api.github.com/repos/lodev09/php-models/zipball/56d4950797d9d452274815fc117222f40b3b27fe",
+                "reference": "56d4950797d9d452274815fc117222f40b3b27fe",
                 "shasum": ""
             },
             "require": {
@@ -53,9 +53,9 @@
             ],
             "support": {
                 "issues": "https://github.com/lodev09/php-models/issues",
-                "source": "https://github.com/lodev09/php-models/tree/2.3.2"
+                "source": "https://github.com/lodev09/php-models/tree/2.3.3"
             },
-            "time": "2022-03-09T17:54:58+00:00"
+            "time": "2022-03-09T21:37:51+00:00"
         },
         {
             "name": "lodev09/php-util",

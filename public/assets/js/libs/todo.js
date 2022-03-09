@@ -182,7 +182,9 @@ Task.prototype = {
         var $element = $(this._element);
         $element.html(`
             <span class="fas fa-circle-exclamation text-warning js-priority-indicator" style="display: none"></span>
-            ` + $.escape(this.data.body) + `
+            <a href="` + $.appUrl + `/tasks/` + this.data.id + `">
+                ` + $.escape(this.data.body) + `
+            </a>
             <div class="controls">
                 <a href="#" class="text-success control js-complete"><i class="fas fa-circle-check"></i></a>
                 <a href="#" class="text-warning control js-prioritize"><i class="fas fa-circle-exclamation"></i></a>

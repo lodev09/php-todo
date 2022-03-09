@@ -36,3 +36,6 @@ RewriteRule ^error/(\d+)/?$ error.php?code=$1 [QSA,L]
 
 ## ajax
 RewriteRule ^ajax/([\w-]+)/?$ ajax/index.php?action=$1 [QSA,L]
+
+## Task
+RewriteRule ^tasks/(\d+)/?$ task.php?task_id=$1 [QSA,L]
