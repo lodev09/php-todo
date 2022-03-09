@@ -5,8 +5,6 @@ require_once 'init.php';
 $_title = 'Home';
 include_once APP_PATH.'/includes/_head.php';
 
-$todos = \App\App::getTodos();
-
 ?>
 
 <body>
@@ -14,30 +12,22 @@ $todos = \App\App::getTodos();
         <header><?= APP_TITLE ?></header>
         <small class="text-muted">Version <?= APP_VERSION ?></small>
 
-        <div class="todo-input">
-            <input type="text" placeholder="Add your new todo" autofocus>
-            <button><i class="fas fa-plus"></i></button>
+        <div class="js-todo">
+            <form method="post" class="js-new-task-form todo-input">
+                <input name="body" type="text" class="js-task-input" placeholder="Add your new todo" autofocus required autocomplete="off">
+                <button type="submit" class="js-add-task" disabled><i class="fas fa-plus"></i></button>
+            </form>
+            <ul class="tasks js-tasks"></ul>
+            <small class="text-muted js-message"></small>
         </div>
-        <?php if ($todos): ?>
-            <ul class="todo-list">
-                <?php foreach($todos as $todo): ?>
-                    <li>
-                        <?= escape($todo->body) ?>
-                        <span class="icon"><i class="fas fa-xmark"></i></span>
-                    </li>
-                <?php endforeach ?>
-            </ul>
-        <?php else: ?>
-            <small class="js-no-todo text-muted">
-                <span class="fas fa-circle-info"></span>
-                You don't have any to-do at the moment.
-            </small>
-        <?php endif ?>
     </div>
 
     <?php
 
-    $_js = ['js/home.js'];
+    $_js = [
+        'js/libs/todo.js',
+        'js/home.js'
+    ];
     include_once APP_PATH.'/includes/_js.php';
 
     ?>

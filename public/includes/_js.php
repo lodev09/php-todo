@@ -2,6 +2,7 @@
 
 $core = [
     'jquery' => 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js',
+    'toastr' => 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js',
     'js/app.js'
 ];
 

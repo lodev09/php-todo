@@ -5,4 +5,4 @@
 \Models\Model::$debug = __DEV__ || __TEST__;
 
 // configure models
-\Models\Todo::register('todos');
+\Models\Task::register('tasks');

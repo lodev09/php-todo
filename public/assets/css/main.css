@@ -51,27 +51,26 @@ body {
     color: #fff;
     margin-left: 5px;
     font-size: 1.5rem;
-    outline: none;
     background: #27ae60;
+    outline: none;
     cursor: pointer;
     border-radius: 3px;
-    opacity: 0.6;
-    pointer-events: none;
     transition: all 0.3s ease;
 }
 .todo-input button:hover,
 .footer button:hover {
-    background: #721ce3;
+    opacity: 0.8;
 }
-.todo-input button.active {
-    opacity: 1;
-    pointer-events: auto;
+.todo-input button:disabled {
+    opacity: 0.8;
+    pointer-events: none;
+    background: #7f8c8d;
 }
-.wrapper .todo-list {
-    max-height: 250px;
+.wrapper .tasks {
+    max-height: 350px;
     overflow-y: auto;
 }
-.todo-list li {
+.tasks li {
     position: relative;
     list-style: none;
     margin-bottom: 8px;
@@ -82,20 +81,27 @@ body {
     overflow: hidden;
     word-wrap: break-word;
 }
-.todo-list li .icon {
+.tasks li .control {
+    width: 24px;
+    margin: 0 5px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 1.25rem;
+    opacity: 1;
+}
+.tasks li .control:hover {
+    opacity: 0.75;
+}
+.tasks li .controls {
+    display: flex;
     position: absolute;
-    right: -45px;
+    right: -140px;
     top: 50%;
     transform: translateY(-50%);
-    width: 45px;
-    text-align: center;
-    color: #7f8c8d;
-    padding: 10px 15px;
-    cursor: pointer;
     transition: all 0.2s ease;
-    font-size: 1.5rem;
+    padding: 0 5px;
 }
-.todo-list li:hover .icon {
+.tasks li:hover .controls {
     right: 0px;
 }
 .wrapper .footer {
@@ -129,6 +135,7 @@ body {
 .text-muted { color: #7f8c8d; }
 .text-danger { color: #e74c3c; }
 .text-warning { color: #f39c12; }
+.text-success { color: #2ecc71; }
 
 .mb-0 { margin-bottom: 0; }
 .mb-1 { margin-bottom: .25rem; }

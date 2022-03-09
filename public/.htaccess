@@ -31,5 +31,8 @@ RewriteRule ^includes/ - [L,R=404]
 # RewriteRule ^.git/ - [L,R=404]
 # RewriteRule ^\.gitignore|.*\.md|composer.json|composer.lock|\.sql$ - [L,R=404]
 
-### errors
+## errors
 RewriteRule ^error/(\d+)/?$ error.php?code=$1 [QSA,L]
+
+## ajax
+RewriteRule ^ajax/([\w-]+)/?$ ajax/index.php?action=$1 [QSA,L]

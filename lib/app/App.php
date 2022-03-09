@@ -6,12 +6,27 @@ use \Common\Util;
 use \Models\Model;
 
 class App {
+
     /**
-     * Get list to-do items
+     * Creates a new Task
+     *
+     * @param  string  $body
+     * @param  boolean $priority
+     * @return Task
+     */
+    public static function newTask($body, $priority = false) {
+        return \Models\Task::insert([
+            'body' => $body,
+            'priority' => $priority ? 1 : 0
+        ]);
+    }
+
+    /**
+     * Get list of tasks
      * @return array
      */
-    public static function getTodos() {
-        return \Models\Todo::query();
+    public static function getTasks() {
+        return \Models\Task::query();
     }
 
     /**
@@ -42,5 +57,16 @@ class App {
 
         if (file_exists($path)) return $path;
         else return self::getInclude('_404');
+    }
+
+    /**
+     * Error 404
+     *
+     * @param  string $message
+     * @param  string $redirect
+     * @return void
+     */
+    public static function error404($message = null, $redirect = null) {
+        self::includeError(404, $message, $redirect);
     }
 }

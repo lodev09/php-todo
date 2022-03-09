@@ -15,9 +15,18 @@ $title = $_title.' - '.$app_title;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="<?= escape($_description) ?>">
 
+    <!-- Variables -->
+    <meta name="hostname" content="<?= SERVER_NAME ?>">
+    <meta name="app-url" content="<?= APP_URL ?>">
+    <meta name="assets-url" content="<?= ASSETS_URL ?>">
+    <meta name="environment" content="<?= getenv('ENVIRONMENT') ?>">
+
     <link rel="icon" type="image/png" href="<?= ASSETS_URL ?>/img/favicon.png" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Libs -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     <?php
 
