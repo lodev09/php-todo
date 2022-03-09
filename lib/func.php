@@ -30,7 +30,7 @@ function plog($msg = '', $newline = true, $options = [], $return = false) {
     $is_pjax = Util::isPjax();
 
     // if current header is json, return plain text
-    $content_type = util::getHeader('Content-Type', headers_list());
+    $content_type = Util::getHeader('Content-Type', headers_list());
 
     $is_html = !($is_cli || $is_ajax || $content_type === 'application/json') || $is_pjax;
 

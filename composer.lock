@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "lodev09/php-models",
-            "version": "2.3.1",
+            "version": "2.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lodev09/php-models.git",
-                "reference": "c8e82f4f8066595f198b07487385b699feb6404f"
+                "reference": "b66df25be683a06f90b38e11c398cfb2bd0e4d35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lodev09/php-models/zipball/c8e82f4f8066595f198b07487385b699feb6404f",
-                "reference": "c8e82f4f8066595f198b07487385b699feb6404f",
+                "url": "https://api.github.com/repos/lodev09/php-models/zipball/b66df25be683a06f90b38e11c398cfb2bd0e4d35",
+                "reference": "b66df25be683a06f90b38e11c398cfb2bd0e4d35",
                 "shasum": ""
             },
             "require": {
@@ -53,26 +53,27 @@
             ],
             "support": {
                 "issues": "https://github.com/lodev09/php-models/issues",
-                "source": "https://github.com/lodev09/php-models/tree/2.3.1"
+                "source": "https://github.com/lodev09/php-models/tree/2.3.2"
             },
-            "time": "2022-03-08T20:09:15+00:00"
+            "time": "2022-03-09T17:54:58+00:00"
         },
         {
             "name": "lodev09/php-util",
-            "version": "2.0.13",
+            "version": "2.0.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lodev09/php-util.git",
-                "reference": "0ee6c014c53c61618eb58a2cea1b2431a513bc2c"
+                "reference": "9d90849229f73cc93c3df2bc2bc1b3268f976848"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lodev09/php-util/zipball/0ee6c014c53c61618eb58a2cea1b2431a513bc2c",
-                "reference": "0ee6c014c53c61618eb58a2cea1b2431a513bc2c",
+                "url": "https://api.github.com/repos/lodev09/php-util/zipball/9d90849229f73cc93c3df2bc2bc1b3268f976848",
+                "reference": "9d90849229f73cc93c3df2bc2bc1b3268f976848",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4"
+                "php": ">=5.4",
+                "ralouphie/getallheaders": "^3.0"
             },
             "type": "library",
             "autoload": {
@@ -101,9 +102,9 @@
             ],
             "support": {
                 "issues": "https://github.com/lodev09/php-util/issues",
-                "source": "https://github.com/lodev09/php-util/tree/2.0.13"
+                "source": "https://github.com/lodev09/php-util/tree/2.0.14"
             },
-            "time": "2021-03-07T04:56:13+00:00"
+            "time": "2022-03-09T18:04:24+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -175,6 +176,50 @@
                 }
             ],
             "time": "2021-12-04T23:24:31+00:00"
+        },
+        {
+            "name": "ralouphie/getallheaders",
+            "version": "3.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ralouphie/getallheaders.git",
+                "reference": "120b605dfeb996808c31b6477290a714d356e822"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/120b605dfeb996808c31b6477290a714d356e822",
+                "reference": "120b605dfeb996808c31b6477290a714d356e822",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpunit/phpunit": "^5 || ^6.5"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/getallheaders.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ralph Khattar",
+                    "email": "ralph.khattar@gmail.com"
+                }
+            ],
+            "description": "A polyfill for getallheaders.",
+            "support": {
+                "issues": "https://github.com/ralouphie/getallheaders/issues",
+                "source": "https://github.com/ralouphie/getallheaders/tree/develop"
+            },
+            "time": "2019-03-08T08:55:37+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
