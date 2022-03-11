@@ -106,7 +106,8 @@ button {
     pointer-events: none;
     background: #7f8c8d;
 }
-.wrapper .stats {
+.wrapper .stats,
+.wrapper .sort {
     margin-bottom: 10px;
     color: #7f8c8d;
     display: flex;
@@ -162,6 +163,7 @@ button {
 .text-danger { color: #e74c3c; }
 .text-warning { color: #f39c12; }
 .text-success { color: #2ecc71; }
+.text-info { color: #2980b9; }
 
 .mb-0 { margin-bottom: 0; }
 .mb-1 { margin-bottom: .25rem; }
@@ -205,4 +207,10 @@ p {
     margin: 0;
     font-size: .75rem;
     color: #fff;
+}
+.d-flex {
+    display: flex;
+}
+.justify-content-between {
+    justify-content: space-between;
 }

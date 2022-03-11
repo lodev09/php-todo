@@ -4,12 +4,27 @@ namespace Models;
 
 class Task extends Model {
 
-    public static function query() {
+    const SORT_PRIORITY = 'priority';
+    const SORT_NAME = 'name';
+
+    public static function query($sort = self::SORT_PRIORITY) {
+        $order = '';
+
+        switch ($sort) {
+            case self::SORT_NAME:
+                $order = ', body, priority DESC, created_at';
+                break;
+
+            default:
+                $order = ', priority DESC, created_at';
+                break;
+        }
+
         return self::select("
             SELECT *
             FROM tasks
             WHERE active = 1
-            ORDER BY completed, priority DESC, body
+            ORDER BY completed $order
         ");
     }
 

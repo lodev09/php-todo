@@ -40,9 +40,10 @@ function complete_task() {
 }
 
 function get_tasks() {
+    $sort = get('sort', $_GET, \Models\Task::SORT_PRIORITY);
     $data = [];
 
-    $tasks = \App\App::getTasks();
+    $tasks = \App\App::getTasks($sort);
     foreach ($tasks as $task) {
         $data[] = $task->get();
     }

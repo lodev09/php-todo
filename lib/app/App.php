@@ -25,8 +25,8 @@ class App {
      * Get list of tasks
      * @return array
      */
-    public static function getTasks() {
-        return \Models\Task::query();
+    public static function getTasks($sort) {
+        return \Models\Task::query($sort);
     }
 
     /**

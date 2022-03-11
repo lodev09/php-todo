@@ -20,7 +20,7 @@ Todo.prototype = {
         var $element = $(this._element);
 
         this.showMessage('Loading your tasks...', 'hourglass')
-        $.get($.ajaxUrl + '/get-tasks', function(data) {
+        $.get($.ajaxUrl + '/get-tasks', { sort: this.options.sort }, function(data) {
 
             if (data && data.length > 0) {
                 that.hideMessage();
